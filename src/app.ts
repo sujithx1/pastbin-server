@@ -6,11 +6,23 @@ import pastes from "./router/pastes";
 
 const app = express();
 
-app.use(cors({
-    origin: process.env.BASE_URL,
-    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      // Allow server-to-server & health checks
+      if (!origin) return callback(null, true);
 
-}));
+      if (origin === process.env.FRONTEND_URL) {
+        return callback(null, true);
+      }
+
+      return callback(new Error("Not allowed by CORS"));
+    },
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+    credentials: false,
+  })
+);
+
 
 
 app.use(express.json());
