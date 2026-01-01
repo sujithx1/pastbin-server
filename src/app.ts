@@ -6,7 +6,11 @@ import pastes from "./router/pastes";
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+    origin: process.env.BASE_URL,
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+
+}));
 
 
 app.use(express.json());
