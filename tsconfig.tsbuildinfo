@@ -1,0 +1,1 @@
+{"root":["./src/app.ts","./src/server.ts","./src/controllers/healthz.controller.ts","./src/controllers/pastes.controller.ts","./src/lib/redis.ts","./src/lib/time.ts","./src/router/healthz.ts","./src/router/pastes.ts"],"version":"5.9.3"}
